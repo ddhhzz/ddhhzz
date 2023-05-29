@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页-Nintendo卡带小屋</title>
+    <link rel="icon" href="./images/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./css/index.css">
+    <script>
+        // 当页面载入的时候加载这个函数
+        window.onload = function () {
+
+            // 获取大盒子的内容 为content的第一个元素 也就是ul中的内容
+            var content = this.document.getElementsByClassName(" content")[0];
+            // 获取ul中的li var
+            var li = content.getElementsByTagName("li");
+            // 函数传入两个参数，(i,j)
+            function fun(i, j) {//转换图片函数，就是把透明度改了一下
+                li[i].style.opacity = 1;
+                li[j].style.opacity = 0;
+                // 然后也把小图标的颜色改一下 
+                // 把图标改成白色 
+                // 如果图片数量发生改变那么下面的3也要变成图片的数量 
+                li[i + 3].style.backgroundColor = "#ffffff";
+                // 把图标改成透明
+                li[j + 3].style.backgroundColor = "#00000000";
+            }
+            // 默认情况下轮播图为第一张
+            fun(0, 1);//初始化下 
+            var i = 0;
+            function auto() {//轮播循环函数 
+                i++;
+                // 当数组越界的时候 
+                if (i >= 3) {
+                    // 置为0
+                    i = 0;
+                    // 然后递归重新开始
+                    // 这里的2位3-1的意思
+                    fun(0, 2);
+                }
+                else {
+                    // 反之递归
+                    fun(i, i - 1);
+                }
+            }
+            // 设置变化的时间
+            timer = this.setInterval(auto, 2000);
+
+            // 设置鼠标在轮播图上的时候 轮播图就停止播放
+            content.onmouseover = function () {
+                //鼠标划上去，停止轮播
+                clearInterval(timer);
+            }
+
+            // 设置鼠标在轮播图上的时候 轮播图就继续播放
+            content.onmouseout = function () {
+                //鼠标划出，继续轮播
+                timer = setInterval(auto, 2000); //调用定时器
+            }
+            var j = 0;
+            for (; j < 3; j++) {
+                //点击小图标也可以转换图片 
+                li[j + 3].index = j;
+                // 当点击小图标进行的函数 
+                li[j + 3].onclick = function () {
+                    fun(this.index, i)
+                    i = this.index;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="header wrapper">
+        <h1><img src="./images/PPTer吧-卡通矢量图可爱马里奥PNG_编号59841 (1).png" alt=""></h1>
+        <div class="nav">
+            <div class="left">
+                <a href="./index.html">首页</a>
+                <a href="./AllGames.html">所有游戏</a>
+                <a href="">游戏攻略</a>
+            </div>
+            <div class="middle">
+                <a href="">
+                    <img src="./images/logo3.png" alt="">
+                </a>
+            </div>
+            <div class="right">
+                <input type="text" placeholder="搜索你想要的游戏" class="sousuo1">
+                <a href="" class="sousuo2">
+                    <img src=".//images/PPTer吧-图标运动象征口袋球PNG_编号69851 (1).png" alt="">
+                </a>
+                <a href="./login.html">登录</a>
+                <a href="./register.html">注册</a>
+                <a href="./car.html" class="gouwuche"></a>
+            </div>
+        </div>
+    </div>
+    <div class="banner wrapper">
+        <div class="middle">
+            <div class="overall">
+                <!-- 内容  -->
+                <div class="content">
+                    <!-- 轮播图片 -->
+                    <ul>
+                        <li>
+                            <a href="./商品详情/集合啦！动物森友会.html">
+                                <img src="./images/8e335570dca2839b1155074f36e5b858.jpeg" alt="">
+                                <div class="boxs">
+                                    集合啦！动物森友会
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./商品详情/塞尔达传说：王国之泪.html">
+                                <img src="./images/99b5f04c715ab747cafe4d0a88f40848.jpg" alt="">
+                                <div class="boxs">
+                                    塞尔达传说：王国之泪
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./商品详情/塞尔达传说：荒野之息.html">
+                                <img src="./images/e2a0c43d144b7a1ba70bdc4003eb4d99.png" alt="">
+                                <div class="boxs">
+                                    塞尔达传说：荒野之息
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- 轮播图的点 -->
+                    <ol>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="left">
+            <ul>
+                <li>今日热门</li>
+                <li><a href="./商品详情/塞尔达传说：王国之泪.html">塞尔达传说：王国之泪</a></li>
+                <li><a href="./商品详情/塞尔达传说：荒野之息.html">塞尔达传说：荒野之息</a></li>
+                <li><a href="./商品详情/集合啦！动物森友会.html">动物森友会</a></li>
+                <li class="lul"><a href="">......</a></li>
+            </ul>
+        </div>
+        <div class="right">
+            <ul>
+                <li>近期浏览</li>
+                <li><a href="" class="">......</a></li>
+                <li><a href="">......</a></li>
+                <li><a href="">......</a></li>
+                <li class="ull"><a href="">......</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="tittle wrapper">
+        <h2>游戏推荐</h2>
+        <a href="" class="a2"><img src=".//images/PPTer吧-标志金属英文字母加PNG.png" alt=""></a>
+        <a href="./AllGames.html" class="a1">查看更多</a>
+    </div>
+    <div class="neirong wrapper">
+        <ul>
+            <li>
+                <a href="./商品详情/塞尔达传说：王国之泪.html">
+                    <img src="./images/goods/20.jpg" alt="">
+                    <h3>塞尔达传说：王国之泪</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/女神异闻录5：皇家版.html">
+                    <img src="./images/goods/1.jpg" alt="">
+                    <h3>女神异闻录5：皇家版</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/宝可梦：朱.html">
+                    <img src="./images/goods/16.jpg" alt="">
+                    <h3>宝可梦：朱</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/宝可梦传说：阿尔宙斯.html">
+                    <img src="./images/goods/3.jpg" alt="">
+                    <h3>宝可梦传说：阿尔宙斯</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/星之卡比：探索发现.html">
+                    <img src="./images/goods/4.jpg" alt="">
+                    <h3>星之卡比：探索发现</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/异度之刃3.html">
+                    <img src="./images/goods/5.jpg" alt="">
+                    <h3>异度之刃3</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/健身环大冒险.html">
+                    <img src="./images/goods/6.jpg" alt="">
+                    <h3>健身环大冒险</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/塞尔达传说：荒野之息.html">
+                    <img src="./images/goods/7.jpg" alt="">
+                    <h3>塞尔达传说：荒野之息</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/集合啦！动物森友会.html">
+                    <img src="./images/goods/8.jpg" alt="">
+                    <h3>集合啦！动物森友会</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/火焰纹章无双：风花雪月.html">
+                    <img src="./images/goods/10.jpg" alt="">
+                    <h3>火焰纹章无双：风花雪月</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/星之卡比：重返梦幻岛豪华版.html">
+                    <img src="./images/goods/11.jpg" alt="">
+                    <h3>星之卡比：重返梦幻岛豪华版</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/斯普拉顿3.html">
+                    <img src="./images/goods/12.png" alt="">
+                    <h3>斯普拉顿3</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/宝可梦：紫.html">
+                    <img src="./images/goods/17.jpg" alt="">
+                    <h3>宝可梦：紫</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/马里奥派对：超级巨星.html">
+                    <img src="./images/goods/19.png" alt="">
+                    <h3>马里奥派对：超级巨星</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/零：月蚀的假面.html">
+                    <img src="./images/goods/18.jpg" alt="">
+                    <h3>零：月蚀的假面</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/最终幻想7：核心危机.html">
+                    <img src="./images/goods/21.jpg" alt="">
+                    <h3>最终幻想7:：核心危机</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/大富翁11.html">
+                    <img src="./images/goods/22.jpg" alt="">
+                    <h3>大富翁11</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/皇家骑士团：重生.html">
+                    <img src="./images/goods/23.jpg" alt="">
+                    <h3>皇家骑士团：重生</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/双人成行.html">
+                    <img src="./images/goods/24.jpg" alt="">
+                    <h3>双人成行</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/太鼓之达人 咚咔 二合一大冒险.html">
+                    <img src="./images/goods/25.jpg" alt="">
+                    <h3>太鼓之达人 咚咔 二合一大冒险</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/火焰纹章：风花雪月.html">
+                    <img src="./images/goods/26.jpg" alt="">
+                    <h3>火焰纹章：风花雪月</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/星露谷物语.html">
+                    <img src="./images/goods/27.jpg" alt="">
+                    <h3>星露谷物语</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/马里奥网球.html">
+                    <img src="./images/goods/28.jpg" alt="">
+                    <h3>马里奥网球</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/宝可梦咖啡馆.html">
+                    <img src="./images/goods/29.jpg" alt="">
+                    <h3>宝可梦咖啡馆</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/牧场物语：橄榄镇与希望大地.html">
+                    <img src="./images/goods/30.jpg" alt="">
+                    <h3>牧场物语：橄榄镇与希望大地</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/蔚蓝.html">
+                    <img src="./images/goods/31.jpg" alt="">
+                    <h3>蔚蓝</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/塞尔达传说：织梦岛.html">
+                    <img src="./images/goods/32.png" alt="">
+                    <h3>塞尔达传说：织梦岛</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/魔剑之王.html">
+                    <img src="./images/goods/33.jpg" alt="">
+                    <h3>魔剑之王</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/街头霸王30周年纪念合集.html">
+                    <img src="./images/goods/34.jpg" alt="">
+                    <h3>街头霸王30周年纪念合集</h3>
+                </a>
+            </li>
+            <li>
+                <a href="./商品详情/耀西的手工世界.html">
+                    <img src="./images/goods/35.jpg" alt="">
+                    <h3>耀西的手工世界</h3>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <hr>
+    <div class="footer wrapper">
+        <div class="left">
+            <ul>
+                <li><img src="./images/logo3.png" alt=""></li>
+                <li class="text">关注我们：
+                    <img src="./images//PPTer吧-对话泡泡聊天PNG图片.png" alt="" class="vx">
+                    <img src="./images/微信18937697615.svg" alt="" class="code1">
+                    <img src="./images/PPTer吧-企业腾讯QQ图标logo图PNG图片.png" alt="" class="qq">
+                    <img src="./images/QQ3393586782.svg" alt="" class="code2">
+                </li>
+                <li class="text">联系邮箱：3393586782@qq.com</li>
+                <li class="text">违法及不良信息举报电话：123456</li>
+            </ul>
+        </div>
+        <div class="right">
+            <img src="./images/手机版我不会搞0.svg" alt="">
+            <p>下载手机版</p>
+        </div>
+    </div>
+    <a href="#html" class="to-top"></a>
+</body>
+
+</html>
